@@ -1,0 +1,40 @@
+#pvOpen {
+  color: #47b;
+  font: menu;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#pvClose {
+  padding-left: 25px;
+  color: #eee;
+  font: menu;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#pvOverlay {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 100;
+  color: #eee;
+  background: rgba(0,0,0,0.7);
+  display: none;
+}
+
+strike {
+  color: #7f7f7f;
+}
+
+#pvTable {
+  width: 500px;
+  margin: 20px 0;
+}
+
+#pvTable td {
+  border-bottom: solid 1px #717171;
+}

@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "shutto-id-viewer",
+  "version": "0.1",
+  "description": "For shutto users, shutto-id viewer.",
+  "icons": {
+    "16": "images/icon.png",
+    "48": "images/icon.png",
+    "128": "images/icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://shutto.com/sites/*", "https://sb.shutto.com/sites/*"],
+      "js": ["js/jquery.min.js", "js/content_script.js"],
+      "css": ["css/overlay.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": ["images/close.gif"]
+}
