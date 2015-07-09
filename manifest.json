@@ -13,7 +13,7 @@
       "matches": ["https://shutto.com/sites/*", "https://sb.shutto.com/sites/*"],
       "js": ["js/jquery.min.js", "js/content_script.js"],
       "css": ["css/overlay.css"],
-      "run_at": "document_end"
+      "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": ["images/close.gif"]
