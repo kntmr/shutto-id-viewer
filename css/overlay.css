@@ -1,40 +1,76 @@
-#pvOpen {
+.lock {
+  overflow: hidden;
+}
+
+.modal-content {
+  position: relative;
+  display: none;
+  width: 50%;
+  margin: 30px;
+  padding: 10px 20px;
+  border: 2px solid #aaa;
+  background: #fff;
+}
+
+.modal-content p {
+  margin: 0;
+  padding: 0;
+}
+
+.modal-overlay {
+  z-index: 1;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-color: rgba(0,0,0,0.75);
+}
+
+.modal-wrap {
+  z-index: 2;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.modal-open {
   color: #47b;
   font: menu;
   text-decoration: underline;
-  cursor: pointer;
 }
 
-#pvClose {
+.modal-open:hover {
+  cursor: pointer;
+  color: #f00;
+}
+
+.modal-close {
   padding-left: 25px;
-  color: #eee;
+  color: #47b;
   font: menu;
   text-decoration: underline;
-  cursor: pointer;
 }
 
-#pvOverlay {
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  top: 0;
-  left: 0;
-  position: fixed;
-  z-index: 100;
-  color: #eee;
-  background: rgba(0,0,0,0.7);
-  display: none;
+.modal-close:hover {
+  cursor: pointer;
+  color: #f00;
+}
+
+.content-table {
+  width: auto;
+  margin: 20px 0;
+}
+
+.content-table td {
+  border-bottom: solid 1px #717171;
 }
 
 strike {
   color: #7f7f7f;
-}
-
-#pvTable {
-  width: 500px;
-  margin: 20px 0;
-}
-
-#pvTable td {
-  border-bottom: solid 1px #717171;
 }

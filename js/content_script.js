@@ -3,12 +3,10 @@ $(function() {
 });
 
 function init() {
-  var outer = $('<div>').attr('id', 'pvOuter'),
-    overlay = $('<div>').attr('id', 'pvOverlay'),
-    open = $('<a>').attr('id', 'pvOpen').text('shutto-id'),
-    close = $('<a>').attr('id', 'pvClose').text('Close'),
-    table = $('<table>').attr('id', 'pvTable');
+  var open = $('<a>').addClass('modal-open').text('shutto-id viewer');
+  $('#pages header').append(open);
 
+  var table = $('<table>').addClass('content-table');
   $.each($('#page-list li'), function() {
     var data = $(this).find('div');
     if (data.attr('data-enable') === 'true') {
@@ -21,24 +19,38 @@ function init() {
         .append($('<td>').append($('<strike>').text(data.attr('data-name')))));
     }
   });
-
-  $('#pages header').append(open);
-
+  var close = $('<a>').addClass('modal-close').text('Close');
   var imgUrl = chrome.extension.getURL("images/close.gif");
   close.css('background', 'url(' + imgUrl + ') no-repeat 0');
 
-  overlay.append($('#pages header h1').clone());
-  overlay.append(table);
-  overlay.append(close);
-  outer.append(overlay);
+  var content = $('<div>').addClass('modal-content');
+  content.append(table);
+  content.append(close);
+  $("body").append(content);
 
-  $("body").append(outer);
+  $('.modal-open').click(function() {
+    $('html, body').addClass('lock');
 
-  $("#pvOpen").on('click', function() {
-    $("#pvOverlay").fadeIn();
-  });
+    $('body').append('<div class="modal-overlay"></div>');
+    $('.modal-overlay').fadeIn('slow');
 
-  $("#pvClose").on('click', function() {
-    $("#pvOverlay").fadeOut();
+    var modal = $('.modal-content');
+    $(modal).wrap("<div class='modal-wrap'></div>");
+    $('.modal-wrap').show();
+
+    $(modal).fadeIn('slow');
+    $(modal).click(function(e) {
+        e.stopPropagation();
+    });
+
+    $('.modal-wrap, .modal-close').off().click(function(){
+      $(modal).fadeOut('slow');
+      $('.modal-overlay').fadeOut('slow',function(){
+        $('html, body').removeClass('lock');
+        $('.modal-overlay').remove();
+        $(modal).unwrap("<div class='modal-wrap'></div>");
+     });
+
+    });
   });
 }
